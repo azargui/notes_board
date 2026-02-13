@@ -15,7 +15,7 @@ function NoteCard({ note }: NoteCardProps) {
 	const colors: Colors = JSON.parse(note.colors);
 	const body = bodyParser(note.body);
 
-	const { setNotes } = useNotesContext();
+	const { setSelectedNote } = useNotesContext();
 
 	const [position, setPositon] = useState<Position>(JSON.parse(note.position));
 	const [saving, setSaving] = useState(false);
@@ -63,6 +63,7 @@ function NoteCard({ note }: NoteCardProps) {
 
 			document.addEventListener("mousemove", mouseMove);
 			document.addEventListener("mouseup", mouseUp);
+			setSelectedNote(note);
 		}
 	}
 
@@ -100,7 +101,7 @@ function NoteCard({ note }: NoteCardProps) {
 				style={{ backgroundColor: colors.colorHeader }}
 				onMouseDown={mouseDown}
 			>
-				<DeleteButton noteId={note._id} setNotes={setNotes} />
+				<DeleteButton noteId={note._id} />
 				{saving && (
 					<div className="card-saving">
 						<Spinner color={colors.colorText} />
@@ -119,6 +120,7 @@ function NoteCard({ note }: NoteCardProps) {
 					}}
 					onFocus={() => {
 						setZIndex(cardRef.current);
+						setSelectedNote(note);
 					}}
 				></textarea>
 			</div>
