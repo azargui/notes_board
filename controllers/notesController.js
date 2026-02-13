@@ -64,8 +64,7 @@ export const updateNoteById = async (req, res) => {
     try {
         const note = await Note.findOneAndUpdate(
             {
-                _id: req.params.id,
-                user_id: req.user.id
+                _id: req.params.id
             },
             req.body,
             { new: true }
@@ -86,8 +85,7 @@ export const updateNoteById = async (req, res) => {
 export const deleteNoteById = async (req, res) => {
     try {
         const note = await Note.findOneAndDelete({
-            _id: req.params.id,
-            user_id: req.user.id
+            _id: req.params.id
         });
 
         if (!note) {
