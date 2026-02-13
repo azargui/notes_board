@@ -1,20 +1,16 @@
-import express from 'express';
-
+import express from "express";
 
 //db connection
-import './config/db.js'
+import "./config/db.js";
 
+const app = express();
 
-const app = express()
-
-app.get('/', (req, res)=>{
-    res.status(200).json({data: 'home page'})
-})
-
-
+app.get("/", (req, res) => {
+  res.status(200).json({ data: "home page" });
+});
 
 //running server
-const PORT = process.env.PORT || 3005
-app.listen(PORT,()=>{
-    console.log(`running in htpp:localhost:${PORT}`)
-})
+const PORT = process.env.PORT || 3005;
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
+});
