@@ -1,13 +1,14 @@
 import Trash from "./icons/Trash";
-import type { Note } from "../types";
 import { deleteNote } from "../api";
+import useNotesContext from "../hooks/useNotesContext";
 
 type DeleteButtonProps = {
 	noteId: string;
-	setNotes: React.Dispatch<React.SetStateAction<Note[]>>;
 };
 
-function DeleteButton({ noteId, setNotes }: DeleteButtonProps) {
+function DeleteButton({ noteId }: DeleteButtonProps) {
+	const { setNotes } = useNotesContext();
+
 	async function handleDelete() {
 		await deleteNote(noteId);
 		setNotes((prevState) => prevState.filter((note) => note._id !== noteId));
