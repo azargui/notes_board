@@ -1,6 +1,8 @@
 import express from "express";
+import cors from "cors";
+import morgan from "morgan";
 
-//Routes
+import authRouter from "./routes/auth.js";
 import NotesRoutes from './routes/notesRoutes.js'
 
 //db connection
@@ -9,11 +11,13 @@ import "./config/db.js";
 const app = express();
 app.use(express.json())
 
-app.get("/api", (req, res) => {
-  res.status(200).json({ data: "home page" });
-});
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json());
 
-app.use('/api/notes', NotesRoutes)
+app.use('/api/auth', authRouter);
+
+app.use('/api/notes', NotesRoutes);
 
 //running server
 const PORT = process.env.PORT || 3005;
