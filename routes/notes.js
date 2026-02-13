@@ -1,16 +1,13 @@
 import { Router } from "express";
 import {
-    getAllNotes,
-    getNoteById,
-    addNote,
-    updateNoteById,
-    deleteNoteById
+	getAllNotes,
+	getNoteById,
+	addNote,
+	updateNoteById,
+	deleteNoteById,
 } from "../controllers/notesController.js";
 
-import {
-    createNoteValidator,
-    updateNoteValidator
-} from "../models/Note.js";
+import { createNoteValidator, updateNoteValidator } from "../models/Note.js";
 
 //import { verifyToken } from "../middleware/verifyToken.js";
 
