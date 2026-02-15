@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Notes from "./pages/Notes";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import NotesProvider from "./contexts/NotesContext";
 import { ToastContainer } from "react-toastify";
@@ -16,6 +17,9 @@ function App() {
 						</NotesProvider>
 					}
 				/>
+				<Route path="/dashboard">
+					<Route index element={<Dashboard/>}/>
+				</Route>
 				<Route path="*" element={<NotFound />} />
 			</Routes>
 			<ToastContainer

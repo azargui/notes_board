@@ -5,6 +5,12 @@ export type Note = {
 	position: string;
 };
 
+export type User = {
+  _id: string;
+  email?: string;
+  role?: string;
+};
+
 export type Position = {
 	x: number;
 	y: number;

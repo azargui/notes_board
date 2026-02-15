@@ -129,3 +129,6 @@ textarea:focus {
 	border-radius: 50%;
 	cursor: pointer;
 }
+.dashboard{
+	color: black;
+}

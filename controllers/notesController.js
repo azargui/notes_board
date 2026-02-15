@@ -10,11 +10,23 @@ export const getAllNotes = async (req, res) => {
 	}
 };
 
+// Get All Notes Of User
+export const getAllNotesOfUser = async (req, res) => {
+	try {
+		const notes = await Note.find({
+			//user_id: req.user.id
+		});
+		res.status(200).json(notes);
+	} catch (error) {
+		res.status(500).json({ message: "Server error" });
+	}
+};
 // Get Note By ID
 export const getNoteById = async (req, res) => {
 	try {
 		const note = await Note.findOne({
 			_id: req.params.id,
+			//user_id: req.user.id
 		});
 
 		if (!note) {
@@ -34,7 +46,7 @@ export const addNote = async (req, res) => {
 			body: req.body.body,
 			colors: req.body.colors,
 			position: req.body.position,
-			user_id: req.user.id
+			//user_id: req.user.id
 		});
 
 		res.status(201).json(note);
@@ -49,6 +61,7 @@ export const updateNoteById = async (req, res) => {
 		const note = await Note.findOneAndUpdate(
 			{
 				_id: req.params.id,
+				//user_id: req.user.id
 			},
 			req.body,
 			{ new: true },
@@ -69,6 +82,7 @@ export const deleteNoteById = async (req, res) => {
 	try {
 		const note = await Note.findOneAndDelete({
 			_id: req.params.id,
+			//user_id: req.user.id
 		});
 
 		if (!note) {

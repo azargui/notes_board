@@ -13,6 +13,7 @@ type NoteCardProps = {
 
 function NoteCard({ note }: NoteCardProps) {
 	const colors: Colors = JSON.parse(note.colors);
+	console.log(note.body)
 	const body = bodyParser(note.body);
 
 	const { setSelectedNote } = useNotesContext();
